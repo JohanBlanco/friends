@@ -1,14 +1,31 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Friends</h1>
+<h1 class="row align-items-center">
+  <div class="col">Friends</div>
+  <div class="col-auto">
+    <%= link_to "New friend", new_friend_path, class:"btn btn-primary" %>
+  </div>
+</h1>
 
-<div id="friends">
-  <% @friends.each do |friend| %>
-    <%= render friend %>
-    <p>
-      <%= link_to "Show this friend", friend %>
-    </p>
-  <% end %>
-</div>
+<table class="table table-hover" id="friends">
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Tweeter</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @friends.each do |friend| %>
+      <tr>
+        <%= render friend %>
+        <td><%= link_to "Show", friend, class: "btn btn-outline-primary btn-sm" %></td>
+        <td><%= link_to "Delete", friend, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<%= link_to "New friend", new_friend_path %>

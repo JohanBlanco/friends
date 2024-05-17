@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <%= link_to 'Friend App', root_path, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,14 +7,44 @@
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
         <li class="nav-item">
-          <%= link_to 'Friends', friends_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'New Friend', new_friend_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
           <%= link_to 'About Us', home_about_path, class: "nav-link" %>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Friends
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li class="nav-item">
+              <%= link_to 'Friends List', friends_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'New Friend', new_friend_path, class: "nav-link" %>
+            </li>
+          </ul>
+        </li>
+        <% if !user_signed_in? %>
+         <li class="nav-item">
+            <%= link_to 'Sign In', new_user_session_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %>
+          </li>
+          
+        <% else %>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Profile
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li class="nav-item">
+              <%= link_to 'Edit Profile', edit_user_registration_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link" %>
+            </li>
+          </ul>
+        </li>
+        <% end %>
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

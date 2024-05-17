@@ -1,4 +1,5 @@
 <%= form_with(model: friend) do |form| %>
+
   <% if friend.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(friend.errors.count, "error") %> prohibited this friend from being saved:</h2>
@@ -11,32 +12,34 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="form-group">
     <%= form.label :first_name, style: "display: block" %>
-    <%= form.text_field :first_name %>
+    <%= form.text_field :first_name, class: "form-control", placeholder: "Allan" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :last_name, style: "display: block" %>
-    <%= form.text_field :last_name %>
+    <%= form.text_field :last_name, class: "form-control", placeholder: "Johansson" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, class: "form-control", placeholder: "allan.johanssson@email.com"  %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :phone, style: "display: block" %>
-    <%= form.text_field :phone %>
+    <%= form.text_field :phone, class: "form-control", placeholder: "88888888"  %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :tweeter, style: "display: block" %>
-    <%= form.text_field :tweeter %>
+    <%= form.text_field :tweeter, class: "form-control", placeholder: "tweet01"  %>
   </div>
 
+  <br><br>
   <div>
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-primary" %>
+    
   </div>
 <% end %>

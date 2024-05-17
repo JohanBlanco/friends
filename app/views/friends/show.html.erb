@@ -1,10 +1,8 @@
-<p style="color: green"><%= notice %></p>
+<h1 class="row align-items-center">
+  <div class="col">Friend's Info</div>
+  <div class="col-auto">
+    <%= render 'layouts/back'%>
+  </div>
+</h1>
 
-<%= render @friend %>
-
-<div>
-  <%= link_to "Edit this friend", edit_friend_path(@friend) %> |
-  <%= link_to "Back to friends", friends_path %>
-
-  <%= button_to "Destroy this friend", @friend, method: :delete %>
-</div>
+<%= render "form", friend: @friend %>
